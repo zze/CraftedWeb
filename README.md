@@ -29,15 +29,20 @@ But you may NOT:
 * 3. Open up your website. You should be redirected to the Installer. Follow the instructions.
 * 4. When you are finished with the Installer. Rename or Delete(Most secure) the /install directory. When you do this, you website Will be enabled.
 * 5. Browse the page and check for any problems. 
+
 	If you encounter errors/problems.
-		-5.1: Open up your configuration file and set 'useDebug' to true
-		-5.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
-		-5.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors. 
+	
+		5.1: Open up your configuration file and set 'useDebug' to true
+		
+		5.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
+		
+		5.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors. 
 		
 		First off, Open up your configuration file and set 'useDebug' to true.
 		In your browser, go into: '{YOUR WEBSITE URL}/includes/error-log.php'. If no errors are reported, you're good. Set the useDebug back to false. 
 		But if you still encounter problems with your site, but no errors are returned, ask for help at the forum.
 		If you do find errors, check the date on them, are they fresh? If yes, read the error, try to solve it on your own if you can. Otherwise, ask for help at 		the forum. 
+
 * 6. If the website runs smoothly, you're good! Report your thoughts on the forum. Do you miss any small feature you want me to add? What were your opinions on the installation proccess? 
 * 7. (Bonus)Open up 'documents/termsofservice.php' and 'documents/refundpolicy.php'. Enable them, and edit the file if you wish to use those.
 
@@ -51,16 +56,21 @@ If somehow, the automatic installation does not work. Try this one.
 * 6. Upload the file located at 'backups/configuration.php' into 'includes/configuration.php'
 * 7. Edit the configuration file to fit your needs.
 * 8. Browse the page and check for any problems. 
+
 	If you encounter errors/problems.
-		-8.1: Open up your configuration file and set 'useDebug' to true
-		-8.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
-		-8.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors.
+	
+		8.1: Open up your configuration file and set 'useDebug' to true
+		
+		8.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
+		
+		8.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors.
 		
 		First off, Open up your configuration file and set 'useDebug' to true.
 		In your browser, go into: '{YOUR WEBSITE URL}/includes/error-log.php'. If no errors are reported, you're good. Set the useDebug back to false. 
 		But if you still encounter problems with your site, but no errors are returned, ask for help at the forum.
 		If you do find errors, check the date on them, are they fresh? If yes, read the error, try to solve it on your own if you can. Otherwise, ask for help at 					the forum. 
-* 9. Your website should now work.	
+
+		* 9. Your website should now work.	
 * 10. (Bonus)Open up 'documents/termsofservice.php' and 'documents/refundpolicy.php'. Enable them, and edit the file if you wish to use those.	
 
 
