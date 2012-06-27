@@ -566,7 +566,7 @@ class page {
 						  {
 						    unlink("../styles/global/slideshow/images/" . $upload["name"]);
 							move_uploaded_file($upload["tmp_name"],"../styles/global/slideshow/images/" . $upload["name"]);
-						    $path = "../styles/global/slideshow/images/" . $upload["name"];
+						    $path = "styles/global/slideshow/images/" . $upload["name"];
 						  }
 						else
 						  {
