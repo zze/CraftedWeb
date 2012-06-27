@@ -5,14 +5,16 @@
 A CMS for game servers.
 
 Original by CraftedDev
+
 **Generation II by Nomsoft.**
 
 
 **Please note that this is a freeware CMS.**
+
 But you may NOT:
-*  - Distribute to others, refer them to the Ac-Web forum thread instead.
-*  - Sell the CMS to others. It's freeware, stupid.
-*  - Claim that you are the owner/creator of the site.
+  - Distribute to others, refer them to the Ac-Web forum thread instead.
+  - Sell the CMS to others. It's freeware, stupid.
+  - Claim that you are the owner/creator of the site.
 
  
  * Note: You will NEED to have your world, auth and website database on the same host.
@@ -28,9 +30,9 @@ But you may NOT:
 * 4. When you are finished with the Installer. Rename or Delete(Most secure) the /install directory. When you do this, you website Will be enabled.
 * 5. Browse the page and check for any problems. 
 	If you encounter errors/problems.
-		*5.1: Open up your configuration file and set 'useDebug' to true
-		*5.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
-		*5.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors. 
+		-5.1: Open up your configuration file and set 'useDebug' to true
+		-5.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
+		-5.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors. 
 		
 		First off, Open up your configuration file and set 'useDebug' to true.
 		In your browser, go into: '{YOUR WEBSITE URL}/includes/error-log.php'. If no errors are reported, you're good. Set the useDebug back to false. 
@@ -50,9 +52,9 @@ If somehow, the automatic installation does not work. Try this one.
 * 7. Edit the configuration file to fit your needs.
 * 8. Browse the page and check for any problems. 
 	If you encounter errors/problems.
-		*8.1: Open up your configuration file and set 'useDebug' to true
-		*8.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
-		*8.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors.
+		-8.1: Open up your configuration file and set 'useDebug' to true
+		-8.2: Browse your website again. The script Should exit the website if any errors are found. The error will be shown directly on to the site.
+		-8.3: (Info)Errors should always be stored in your error.log file(Your CHMOD must be set to 777 on the error.log file). To view these errors.
 		
 		First off, Open up your configuration file and set 'useDebug' to true.
 		In your browser, go into: '{YOUR WEBSITE URL}/includes/error-log.php'. If no errors are reported, you're good. Set the useDebug back to false. 
