@@ -22,13 +22,18 @@ But you may NOT:
 #Installing
 
 **AUTOMATIC WAY TO INSTALL:**
-* 1. Upload all files to your desired location.
-* 2. (Optional)Create a new database ON THE SAME DATABASE AS YOUR 'auth'. Name it for example: craftedweb. If you do not create one now, the installer will 				             hopefully do it for you.
-* 3. CHMOD the 'error.log','/install/sql/CraftedWeb_Base.sql','/includes/configuration.php' and lastly, all files found in '/install/sql/updates/'
+1. Upload all files to your desired location.
+
+2. (Optional)Create a new database ON THE SAME DATABASE AS YOUR 'auth'. Name it for example: craftedweb. If you do not create one now, the installer will do it for you.
+
+3. CHMOD the 'error.log','/install/sql/CraftedWeb_Base.sql','/includes/configuration.php' and lastly, all files found in '/install/sql/updates/'
 	How to CHMOD on FileZilla: http://www.phpjunkyard.com/tutorials/ftp-chmod-tutorial.php
-* 3. Open up your website. You should be redirected to the Installer. Follow the instructions.
-* 4. When you are finished with the Installer. Rename or Delete(Most secure) the /install directory. When you do this, you website Will be enabled.
-* 5. Browse the page and check for any problems. 
+
+4. Open up your website. You should be redirected to the Installer. Follow the instructions.
+
+5. When you are finished with the Installer. Rename or Delete(Most secure) the /install directory. When you do this, you website Will be enabled.
+
+6. Browse the page and check for any problems. 
 
 	If you encounter errors/problems.
 	
@@ -43,19 +48,28 @@ But you may NOT:
 		But if you still encounter problems with your site, but no errors are returned, ask for help at the forum.
 		If you do find errors, check the date on them, are they fresh? If yes, read the error, try to solve it on your own if you can. Otherwise, ask for help at 		the forum. 
 
-* 6. If the website runs smoothly, you're good! Report your thoughts on the forum. Do you miss any small feature you want me to add? What were your opinions on the installation proccess? 
-* 7. (Bonus)Open up 'documents/termsofservice.php' and 'documents/refundpolicy.php'. Enable them, and edit the file if you wish to use those.
+7. If the website runs smoothly, you're good! Report your thoughts on the forum. Do you miss any small feature you want me to add? What were your opinions on the installation proccess? 
+
+8. (Bonus)Open up 'documents/termsofservice.php' and 'documents/refundpolicy.php'. Enable them, and edit the file if you wish to use those.
 
 **MANUAL WAY TO INSTALL:**
 If somehow, the automatic installation does not work. Try this one.
-* 1. Upload all files to your desired location.
-* 2. Create a new database ON THE SAME DATABASE AS YOUR 'auth'. Name it for example: craftedweb.
-* 3. Open up any SQL software of your choise (eg. HeidiSQL). Run the SQL file located at: install/sql/CraftedWeb_Base.sql. 
-* 4. (Optional)Same as above, but run the file named 'item_icons.sql' this time instead.
-* 5. Remove the file 'includes/configuration.php'
-* 6. Upload the file located at 'backups/configuration.php' into 'includes/configuration.php'
-* 7. Edit the configuration file to fit your needs.
-* 8. Browse the page and check for any problems. 
+
+ 1. Upload all files to your desired location.
+ 
+ 2. Create a new database ON THE SAME DATABASE AS YOUR 'auth'. Name it for example: craftedweb.
+ 
+ 3. Open up any SQL software of your choise (eg. HeidiSQL). Run the SQL file located at: install/sql/CraftedWeb_Base.sql. 
+ 
+ 4. (Optional)Same as above, but run the file named 'item_icons.sql' this time instead.
+ 
+ 5. Remove the file 'includes/configuration.php'
+ 
+ 6. Upload the file located at 'backups/configuration.php' into 'includes/configuration.php'
+ 
+ 7. Edit the configuration file to fit your needs.
+ 
+ 8. Browse the page and check for any problems. 
 
 	If you encounter errors/problems.
 	
@@ -70,8 +84,9 @@ If somehow, the automatic installation does not work. Try this one.
 		But if you still encounter problems with your site, but no errors are returned, ask for help at the forum.
 		If you do find errors, check the date on them, are they fresh? If yes, read the error, try to solve it on your own if you can. Otherwise, ask for help at 					the forum. 
 
-		* 9. Your website should now work.	
-* 10. (Bonus)Open up 'documents/termsofservice.php' and 'documents/refundpolicy.php'. Enable them, and edit the file if you wish to use those.	
+9. Your website should now work.	
+
+10. (Bonus)Open up 'documents/termsofservice.php' and 'documents/refundpolicy.php'. Enable them, and edit the file if you wish to use those.	
 
 
 #FAQ
