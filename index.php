@@ -19,8 +19,6 @@
 #                  anywhere unless you were given permission.                 
 #                  © Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
-
-
     require('includes/loader.php'); //Load all php scripts
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
