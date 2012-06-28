@@ -22,6 +22,7 @@
 ?>
 <script type="text/javascript" src="javascript/jquery.js"></script>
 <script type="text/javascript" src="javascript/main.js"></script>
+<script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
 <script type="text/javascript" src="javascript/jquery.nivo.slider.js"></script>
 
 
