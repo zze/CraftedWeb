@@ -47,7 +47,7 @@ if($_GET['p']=='voteshop')
 if($GLOBALS['enableSlideShow']==true && $_GET['p'] == 'home')
 {
 ?>
-	<script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery.min.js"></script>
 	<script type="text/javascript" src="javascript/jquery.nivo.slider.js"></script>
     <script type="text/javascript">
     	$(window).load(function() {
