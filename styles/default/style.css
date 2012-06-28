@@ -1,6 +1,16 @@
-/* Template created by Anthony @ CraftedWeb. */
-/* Distribution without me knowing and aproving is illegal. */
-/* Created: 2011-08-21 */
+/* 
+#				-CraftedWeb Generation II-                  
+#			 __                           __ _   							   
+#		  /\ \ \___  _ __ ___  ___  ___  / _| |_ 							   
+#		 /  \/ / _ \| '_ ` _ \/ __|/ _ \| |_| __|							   
+#		/ /\  / (_) | | | | | \__ \ (_) |  _| |_ 							   
+#		\_\ \/ \___/|_| |_| |_|___/\___/|_|  \__|	- www.Nomsoftware.com -	   
+#                  The policy of Nomsoftware states: Releasing our software   
+#                  or any other files are protected. You cannot re-release    
+#                  anywhere unless you were given permission.                 
+#                  © Nomsoftware 'Nomsoft' 2011-2012. All rights reserved. 
+*/
+
 body { background-color: #090909; background-image: url(images/bg.jpg); background-repeat:no-repeat; 
 color: #fff; font-family: 'Calibri', 'newCalibri', 'Arial'; font-size: 11px; background-position:top center; margin: 0; padding: 0; }
 
@@ -8,8 +18,8 @@ color: #fff; font-family: 'Calibri', 'newCalibri', 'Arial'; font-size: 11px; bac
 #wrapper { width: 1000px; position: relative; margin: 0px auto; padding: 0; }
 
 /* Links */
-a { color: #4B8EFE; text-decoration:none; cursor:pointer; }
-a:hover { color: #ccc }
+a { color: #0060b1; text-decoration:none; cursor:pointer; }
+a:hover { color: #FFF }
 
 /* <hr> */
 hr { border-top: 1px solid #363636; border-bottom: 1px solid #161616; border-left: none; border-right: none; }
@@ -48,15 +58,15 @@ textarea { border: 1px solid #333; background-color: #181818; padding: 4px; colo
 
 /* Menu Links */
 #menu a { position: relative; float: left; padding-left: 30px; padding-right: 30px; padding-top: 14px; height:35px; color: #fff;  }
-#menu a:hover { background-color: #004D71; background-image:url(images/menu_item_hover.png); }
-#menu .current { background-color: #333; }
+#menu a:hover { background-color: #0060b1; /*background-image:url(images/menu_item_hover.png);*/ }
+#menu .current { background-color: #000000; }
 
 /* Content divs */
 #leftcontent { position: relative; float: left; width: 680px; margin-top: 30px; }
 #rightcontent { position: relative; float: left; width: 290px; margin-top: 30px;margin-left: 30px;}
 	
 /* Box one classes */	
-.box_one { position: relative; width: 280px; background-color:#1E1E1E; padding: 5px; margin-bottom: 20px; 
+.box_one { position: relative; width: 280px; background-color:#141414; padding: 5px; margin-bottom: 20px; 
 background-image: url(images/content_left_bg.png); background-repeat:repeat-x;border: 1px solid #343434;
 -moz-box-shadow: 0px 0px 14px #000; -webkit-box-shadow: 0px 0px 14px #000; box-shadow: 0px 0px 14px #000; 
 float: left;}
@@ -70,7 +80,7 @@ padding-left: 10px; text-shadow: 1px 1px 1px #000; color: #eee; background-color
 /* Box two classes */
 .box_two { position: relative; float:left; width: 660px; padding: 10px; margin-bottom: 20px; 
 -moz-box-shadow: 0px 0px 14px #000; -webkit-box-shadow: 0px 0px 14px #000; box-shadow: 0px 0px 14px #000; 
-background-color: #1E1E1E; background-repeat:repeat-x; float:left;  border: 1px solid #171717;}
+background-color: #141414; background-repeat:repeat-x; float:left;  border: 1px solid #171717;}
 .box_two_title { position: relative; width: 666px; height: 28px; background-image:url(images/box_one_title.png); 
 color: #fff; margin-left: -11px; margin-top: -11px; padding-top: 5px; padding-left: 15px; margin-bottom: 10px; 
 font-size: 18px; color: #FFD31C; }
@@ -243,16 +253,6 @@ color: #ccc; display:none; text-shadow: 1px 1px 1px #111; opacity: 0.7; cursor: 
 
 #realmlist { color: #FFD31C; }
 
-
-/*
-Skin Name: Nivo Slider Default Theme
-Skin URI: http://nivo.dev7studios.com
-Skin Type: flexible
-Description: The default skin for the Nivo Slider.
-Version: 1.2
-Author: Gilbert Pellegrom
-Author URI: http://dev7studios.com
-*/
 .slider-wrapper { 
 	width: 670px; 
 	height: 240px;
