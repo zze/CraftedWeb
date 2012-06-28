@@ -110,9 +110,9 @@ If somehow, the automatic installation does not work. Try this one.
 * A: Currently, only TrinityCore. Major cataclysm support is available also(Skyfire/ArkCore etc), but some items may be lacking, but the site will still run at ~ 95%.
 	ArcEmu/Mangos support will Maybe be added in future, but it takes extra effort to make it compatible with multiple cores. 
 
-	
-* Q: This FAQ sucks! I did not get any answer to my question.
-* A: This CMS was recently released, & the FAQ willed be filled when common bugs has been found. If you require assistance, just ask in issues.
+
+* Q: My slider images are not uploading!
+* A: You must chmod 0777 your styles/global/slideshow/ directory and the folders in it.
 
 
 Thank you for using **CraftedWeb**.
