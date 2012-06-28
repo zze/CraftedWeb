@@ -44,7 +44,7 @@ if($_GET['p']=='voteshop')
     </script>
 <?php } 
 
-if($GLOBALS['enableSlideShow']==true)
+if($GLOBALS['enableSlideShow']==true && $_GET['p'] == 'home')
 {
 ?>
 	<script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
