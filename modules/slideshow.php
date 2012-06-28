@@ -26,13 +26,6 @@ if ($GLOBALS['enableSlideShow']==TRUE && !isset($_COOKIE['hideslider']) && $_GET
             <div id="slider" class="nivoSlider">
 				<?php website::getSlideShowImages(); ?>
             </div>
-            <script type="text/javascript">
-    			$(window).load(function() {
-    				$('#slider').nivoSlider({
-    				    effect: 'fade',
-    				});
-				});
-    		</script>
         </div>
     </div>
 </div>
