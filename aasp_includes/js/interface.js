@@ -250,7 +250,7 @@ function removeSlideImage(id) {
 function removeSlideImageNow(id) {
 	$.post("../aasp_includes/scripts/layout.php", { action: "deleteImage", id: id },
        function(data) {
-			 window.location='?p=slideshow';
+			 window.location='?p=interface&s=slideshow';
        });
 }
 
