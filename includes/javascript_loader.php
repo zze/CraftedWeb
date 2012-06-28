@@ -22,8 +22,6 @@
 ?>
 <script type="text/javascript" src="javascript/jquery.js"></script>
 <script type="text/javascript" src="javascript/main.js"></script>
-<script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
-<script type="text/javascript" src="javascript/jquery.nivo.slider.js"></script>
 
 
 <?php
@@ -49,7 +47,15 @@ if($_GET['p']=='voteshop')
 if($GLOBALS['enableSlideShow']==true)
 {
 ?>
-	<script type="text/javascript" src="javascript/slideshow.js"></script>
+	<script type="text/javascript" src="javascript/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="javascript/jquery.nivo.slider.js"></script>
+    <script type="text/javascript">
+    	$(window).load(function() {
+    		$('#slider').nivoSlider({
+    			effect: 'fade',
+    		});
+		});
+	</script>
 <?php 
 }
 if($GLOBALS['core_expansion']>2) 
