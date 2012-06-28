@@ -29,7 +29,7 @@ if ($GLOBALS['enableSlideShow']==TRUE && !isset($_COOKIE['hideslider']) && $_GET
             <script type="text/javascript">
     			$(window).load(function() {
     				$('#slider').nivoSlider({
-    				    effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
+    				    effect: 'fade',
     				});
 				});
     		</script>
