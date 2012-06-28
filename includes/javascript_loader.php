@@ -22,6 +22,8 @@
 ?>
 <script type="text/javascript" src="javascript/jquery.js"></script>
 <script type="text/javascript" src="javascript/main.js"></script>
+<script type="text/javascript" src="javascript/jquery.nivo.slider.js"></script>
+
 
 <?php
 ####SHOP CARTS####
