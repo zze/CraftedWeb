@@ -214,7 +214,7 @@ position: relative; background-color:#1E1E1E; padding: 5px; margin-bottom: 20px;
 background-image: url(images/content_left_bg.png); background-repeat:repeat-x;border: 1px solid #343434;
 -moz-box-shadow: 0px 0px 14px #000; -webkit-box-shadow: 0px 0px 14px #000; box-shadow: 0px 0px 14px #000;  }
 /*--Window/Masking Styles--*/
-.window { height:250px;	width: 670px; overflow: hidden;  position: relative; }
+.window { height:240px;	width: 670px; overflow: hidden;  position: relative; }
 .image_reel { position: absolute; top: 0; left: 0; }
 .image_reel img {float: left;}
 .slideshow_image { width: 670px; height: 250px; }
@@ -255,7 +255,7 @@ Author URI: http://dev7studios.com
 */
 .slider-wrapper { 
 	width: 670px; 
-	height: 250px;
+	height: 240px;
 	margin: 0 auto;
 }
 
