@@ -96,7 +96,8 @@
                                     <ul class="hidden" <?php activeMenu('tools'); ?>>
                                        <a href="?p=tools&s=tickets">Tickets</a>
                                        <a href="?p=tools&s=accountaccess">Account Access</a>
-                                   </ul>      
+                                   </ul>    
+							  <li onclick="window.location='?p=credits'">Credits</li>   
                           </ul>
          </div>
 </div>
