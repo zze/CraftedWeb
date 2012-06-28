@@ -132,19 +132,6 @@ class website {
 	  }
 	}
 	
-	public static function getSlideShowImageNumbers() 
-	{
-		connect::selectDB('webdb');
-		$result = mysql_query("SELECT position FROM slider_images ORDER BY position ASC");
-		$x =  1;
-		while($row = mysql_fetch_assoc($result)) 
-		{
-			echo '<a href="#" rel="'.$x.'">'.$x.'</a>';
-			$x++;
-		}
-		unset($x);
-	}
-	
 	public static function limit_characters($str,$n) 
 	{        
 		$str = preg_replace("/<img[^>]+\>/i", "(image)", $str); 
