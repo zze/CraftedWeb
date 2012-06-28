@@ -124,7 +124,7 @@ class website {
 			while($row = mysql_fetch_assoc($result)) 
 			{
 				echo $outPutPT = '<a href="'.$row['link'].'">
-								  <img border="none" src="'.$row['path'].'" alt="">
+								  <img border="none" src="'.$row['path'].'" alt="" />
 								  </a>';
 				$output .= $outPutPT;
 			}
