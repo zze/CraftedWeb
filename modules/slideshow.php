@@ -22,12 +22,18 @@
 if ($GLOBALS['enableSlideShow']==TRUE && !isset($_COOKIE['hideslider']) && $_GET['p']=='home') { ?>
 <div class="main_view">
     <div class="window">
-        <div class="image_reel">
-        		<?php website::getSlideShowImages(); ?>
+		<div class="slider-wrapper theme-default">
+            <div id="slider" class="nivoSlider">
+				<?php website::getSlideShowImages(); ?>
+            </div>
+            <script type="text/javascript">
+    			$(window).load(function() {
+    				$('#slider').nivoSlider({
+    				    effect: 'fade', // Specify sets like: 'fold,fade,sliceDown'
+    				});
+				});
+    		</script>
         </div>
-    </div>
-    <div class="paging">
-        <?php website::getSlideShowImageNumbers(); ?>
     </div>
 </div>
 <?php } ?>
