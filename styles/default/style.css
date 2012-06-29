@@ -57,7 +57,7 @@ textarea { border: 1px solid #333; background-color: #181818; padding: 4px; colo
 -moz-box-shadow: 0px 0px 10px #000; -webkit-box-shadow: 0px 0px 10px #000; box-shadow: 0px 0px 10px #000; font-size: 16px; opacity: 0.78; text-align: center;
 margin-left:auto; margin-right:auto; width:50%; }
 
-#menu.floating-menu {position:fixed; background:#141414;/*width:900px;*/ right: 50; top: 1%; }
+#menu.floating-menu {position:fixed; background:#141414;/*width:900px; right: 50;*/ top: 1%; }
 /*#menu.floating-menu a, div.floating-menu h3 {display:inherit;margin:0 0.5em;}*/
 
 /* Menu Links */
@@ -72,12 +72,12 @@ margin-left:auto; margin-right:auto; width:50%; }
 
 /* Box one classes */	
 
-.box_one { position: relative; width: 240px; background-color:#141414; padding: 5px; margin-bottom: 20px; 
+.box_one { position: relative; width: 280px; background-color:#141414; padding: 5px; margin-bottom: 20px; 
 /*background-image: url(images/content_left_bg.png);*/ background-repeat:repeat-x;border: 1px solid #343434;
 -moz-box-shadow: 0px 0px 14px #000; -webkit-box-shadow: 0px 0px 14px #000; box-shadow: 0px 0px 14px #000; 
 float: left; opacity: 0.68;}
 
-.box_one_title { position: relative; width: 240px; height: 30px; background-image:url(images/box_one_title.png); background-repeat:repeat-x; color: #fff;
+.box_one_title { position: relative; width: 280px; height: 30px; background-image:url(images/box_one_title.png); background-repeat:repeat-x; color: #fff;
 margin-left: -5px; margin-top: -6px; padding-top: 7px; padding-left: 10px; font-size: 15px; text-shadow: 0px 1px 1px #111;}
 
 #alert { position: relative; float: left; /*width: 980px;*/ height: auto; background-image:url(images/box_one_title.png); background-repeat: repeat-x;
@@ -189,7 +189,7 @@ span.vote {color: #B79000;border: 1px solid #1D73A7;background: #85B3FE;}
 span.moreinfo:hover { opacity:0.78; }
 
 /* Account functions */
-.account_func  { position: relative; float:left; width:240px; padding-left: 40px; padding-right: 40px; color: #999; background-image:url(images/account_func_bg.png);
+.account_func  { position: relative; float:left; width:98px; padding-left: 40px; padding-right: 40px; color: #999; background-image:url(images/account_func_bg.png);
 background-repeat:repeat-x; border: 1px solid #343434; height: 32px; font-size: 15px; padding-top: 11px; cursor:pointer; margin-bottom: -1px;
 margin-left: -1px;	 }
 .account_func:hover { color: #71B100; }
@@ -231,7 +231,7 @@ position: relative; background-color:#1E1E1E; padding: 5px; margin-bottom: 20px;
 /*background-image: url(images/content_left_bg.png);*/ background-repeat:repeat-x;border: 1px solid #343434;
 -moz-box-shadow: 0px 0px 14px #000; -webkit-box-shadow: 0px 0px 14px #000; box-shadow: 0px 0px 14px #000;  }
 /*--Window/Masking Styles--*/
-.window { height:240px;	width: 670px; overflow: hidden;  position: relative; }
+.window { height:250px;	width: 670px; overflow: hidden;  position: relative; }
 .image_reel { position: absolute; top: 0; left: 0; }
 .image_reel img {float: left;}
 .slideshow_image { width: 670px; height: 250px; }
@@ -247,7 +247,7 @@ z-index: 100000; text-align: center; line-height: 40px; display: none;  text-sha
 .votelink { position: relative; float: left; width: 650px; padding: 5px; margin: 4px; color: #999;text-align: left; background-color:#222; }
 
 /* Server Status */
-.srv_status_po { position: relative; width: 140px; height: 19px; border: 1px solid #151515; overflow:hidden; }
+.srv_status_po { position: relative; width: 280px; height: 19px; border: 1px solid #151515; overflow:hidden; }
 .srv_status_po_alliance { position:relative; float:left; height: 20px; 
 background-image:url(images/srv_status_alliance.png); background-repeat:no-repeat;  }
 .srv_status_po_horde { position:relative; float:left; height: 20px; 
