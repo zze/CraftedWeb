@@ -1,0 +1,14 @@
+/*
+ *   Color skin GRAY
+ *   ===============
+ **/
+
+body,
+#content  { background-color: #3e3c3c; }
+
+#main     { background-image: url(../images/gray/bg-header-login.gif); }
+#logo     { background-image: url(../images/gray/bg-gradient-login.gif); }
+#content  { background-image: url(../images/gray/bg-content-login.gif); }
+
+.formBox input.input           { background-image: url(../images/gray/bg-input-login.gif); }
+.formBox input:focus.input     { background-image: url(../images/gray/bg-input-login.gif); }

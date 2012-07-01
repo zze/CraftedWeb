@@ -1,0 +1,29 @@
+/*
+ *   Color skin RED
+ *   ==============
+ **/
+
+#main         {	background-image: url(../images/red/bg-header-repeat.png); }
+#header       { background-image: url(../images/red/bg-header.png); }
+
+.box .headlines { background-image: url(../images/red/bg-headlines.gif); }
+.box .headlines h2 { background-image: url(../images/red/bg-bookmark.gif); }
+.box .headlines h2 span { background-image: url(../images/red/bg-bookmark.gif); }
+
+.box .bookmarks { background-image: url(../images/red/bg-headlines.gif); }
+.box .bookmarks li.ui-state-active   { background-image: url(../images/red/bg-bookmark.gif); }
+.box .bookmarks li.ui-state-active a { background-image: url(../images/red/bg-bookmark.gif); }
+
+.formBox .button,
+.btn-default { background: url(../images/red/bg-button.gif); }
+
+a { color: #CA3824; }
+.pagination ul li.active a  { color: #CA3824 !important; }
+
+table.jCalendar th,
+div.dp-popup h2,
+table.jCalendar td.selected:hover,
+table.jCalendar td:hover,table.jCalendar td.dp-hover { color: #CA3824 !important; }
+
+table.jCalendar td.selected { background: #CA3824; }
+table.jCalendar td.today { background-color: #FFDED4; }

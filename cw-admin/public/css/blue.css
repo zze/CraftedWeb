@@ -1,0 +1,29 @@
+/*
+ *   Color skin BLUE
+ *   ===============
+ **/
+
+#main         {	background-image: url(../images/blue/bg-header-repeat.png); }
+#header       { background-image: url(../images/blue/bg-header.png); }
+
+.box .headlines { background-image: url(../images/blue/bg-headlines.gif); }
+.box .headlines h2 { background-image: url(../images/blue/bg-bookmark.gif); }
+.box .headlines h2 span { background-image: url(../images/blue/bg-bookmark.gif); }
+
+.box .bookmarks { background-image: url(../images/blue/bg-headlines.gif); }
+.box .bookmarks li.ui-state-active   { background-image: url(../images/blue/bg-bookmark.gif); }
+.box .bookmarks li.ui-state-active a { background-image: url(../images/blue/bg-bookmark.gif); }
+
+.formBox .button,
+.btn-default { background: url(../images/blue/bg-button.gif); }
+
+a { color: #1f499f; }
+.pagination ul li.active a  { color: #1f499f !important; }
+
+table.jCalendar th,
+div.dp-popup h2,
+table.jCalendar td.selected:hover,
+table.jCalendar td:hover,table.jCalendar td.dp-hover { color: #1f499f !important; }
+
+table.jCalendar td.selected { background: #1f499f; }
+table.jCalendar td.today { background-color: #dcecf2; }

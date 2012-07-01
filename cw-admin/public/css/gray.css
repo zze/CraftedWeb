@@ -1,0 +1,29 @@
+/*
+ *   Color skin GRAY
+ *   ===============
+ **/
+
+#main         {	background-image: url(../images/gray/bg-header-repeat.png); }
+#header       { background-image: url(../images/gray/bg-header.png); }
+
+.box .headlines { background-image: url(../images/gray/bg-headlines.gif); }
+.box .headlines h2 { background-image: url(../images/gray/bg-bookmark.gif); }
+.box .headlines h2 span { background-image: url(../images/gray/bg-bookmark.gif); }
+
+.box .bookmarks { background-image: url(../images/gray/bg-headlines.gif); }
+.box .bookmarks li.ui-state-active   { background-image: url(../images/gray/bg-bookmark.gif); }
+.box .bookmarks li.ui-state-active a { background-image: url(../images/gray/bg-bookmark.gif); }
+
+.formBox .button,
+.btn-default { background: url(../images/gray/bg-button.gif); }
+
+a { color: #000; }
+.pagination ul li.active a  { color: #000 !important; }
+
+table.jCalendar th,
+div.dp-popup h2,
+table.jCalendar td.selected:hover,
+table.jCalendar td:hover,table.jCalendar td.dp-hover { color: #000 !important; }
+
+table.jCalendar td.selected { background: #4e4c4c; }
+table.jCalendar td.today { background-color: #dedede; }

@@ -1,0 +1,179 @@
+/*   Date Picker
+ *   -----------
+ */
+ 
+table.jCalendar {
+  padding: 0 !important;
+  width: 100%;
+  border-collapse: separate; 
+}
+table.jCalendar td {
+  margin: 2px;
+  padding: 6px 0 !important;
+  text-align: center !important;
+  color: #404040 !important;
+  font-size: .833em;
+  border-right: 1px #cfcfcf solid;
+  border-bottom: 1px #cfcfcf solid;
+  -moz-border-radius: 0 0 5px 0;
+  -webkit-border-radius: 0 0 5px 0;
+}
+
+table.jCalendar th {
+  padding: 4px 0 !important;
+  width: 40px;
+  margin-bottom: 2px;
+  text-align: center !important;
+  font-size: .833em; 
+}
+
+table.jCalendar td.other-month {
+  color: #cacaca !important;
+}
+
+table.jCalendar td.today {
+  font-weight: bold;
+}
+
+table.jCalendar td.selected {
+  color: #fff !important;
+}
+
+table.jCalendar td:hover,table.jCalendar td.dp-hover {
+  background: #fbfbfb !important;
+  font-weight: bold;
+}
+
+table.jCalendar td.disabled,table.jCalendar td.disabled:hover {
+  background: #bbb;
+  color: #888;
+}
+
+/* For the popup */
+div.dp-popup {
+  width: auto;
+  background-color: #f0f0f0;
+  position: relative;
+  line-height: 1.2em;
+  font-size: 1.2em;
+}
+
+div.dp-popup .date-content {
+  width: 252px;
+  padding: 8px 11px 11px;
+  border: 1px solid #E3E3E3; 
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  background-color: #f0f0f0;
+}
+
+div#dp-popup {
+  position: absolute;
+  z-index: 199;
+}
+
+div.dp-popup h2 {
+  padding: 5px 5px 10px;
+  margin: 0;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+}
+
+a#dp-close {
+  font-size: 11px;
+  padding: 4px 0;
+  text-align: center;
+  display: block;
+}
+
+a#dp-close :hover {
+  text-decoration: underline;
+}
+
+div.dp-popup a {
+  color: #000;
+  text-decoration: none;
+  padding: 3px 2px 0;
+}
+
+div.dp-popup div.dp-nav-prev {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}
+
+div.dp-popup div.dp-nav-prev a {
+  display: block;
+  float: left;
+}
+
+div.dp-popup div.dp-nav-prev a.dp-nav-prev-year {
+  background: url('../images/ico/bg-first.gif') no-repeat scroll 0 0;
+  width: 20px;
+  height: 20px;
+  text-indent: 1234px;
+}
+
+div.dp-popup div.dp-nav-prev a.dp-nav-prev-month {
+  background: url('../images/ico/bg-prev.gif') no-repeat scroll 0 0;
+  width: 20px;
+  height: 20px;
+  text-indent: 1234px;
+}
+
+/* Opera needs the rules to be this specific otherwise it doesn't change the cursor back to pointer after you have disabled and re-enabled a link */
+div.dp-popup div.dp-nav-prev a,div.dp-popup div.dp-nav-next a {
+  cursor: pointer;
+}
+
+div.dp-popup div.dp-nav-prev a.disabled,div.dp-popup div.dp-nav-next a.disabled {
+  cursor: default;
+}
+
+div.dp-popup div.dp-nav-next {
+  position: absolute;
+  top: 12px;
+  right: 8px;
+}
+
+div.dp-popup div.dp-nav-next a {
+  display: block;
+  float: right;
+}
+
+div.dp-popup div.dp-nav-next a.dp-nav-next-year {
+  background: url('../images/ico/bg-last.gif') no-repeat;
+  width: 20px;
+  height: 20px;
+  text-indent: 1234px;
+}
+
+div.dp-popup div.dp-nav-next a.dp-nav-next-month {
+  background: url('../images/ico/bg-next.gif') no-repeat;
+  width: 20px;
+  height: 20px;
+  text-indent: 1234px;
+}
+
+div.dp-popup a.disabled {
+  cursor: default;
+  color: #aaa;
+}
+
+div.dp-popup td {
+  cursor: pointer;
+}
+
+div.dp-popup td.disabled {
+  cursor: default;
+}
+  
+a.ico-calendar {
+  position: absolute; top: 5px; right: 5px;
+  width: 16px; height: 16px;
+  text-indent: 1234px; overflow: hidden; 
+  background: url('../images/ico/datepicker.png') 0 0 no-repeat;
+}
+
+a:hover.ico-calendar { background-position: 0 -16px; }

@@ -1,0 +1,14 @@
+/*
+ *   Color skin GREEN
+ *   ================
+ **/
+
+body,
+#content  { background-color: #609801; }
+
+#main     { background-image: url(../images/green/bg-header-login.gif); }
+#logo     { background-image: url(../images/green/bg-gradient-login.gif); }
+#content  { background-image: url(../images/green/bg-content-login.gif); }
+
+.formBox input.input           { background-image: url(../images/green/bg-input-login.gif); }
+.formBox input:focus.input     { background-image: url(../images/green/bg-input-login.gif); }

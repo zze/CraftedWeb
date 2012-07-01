@@ -1,0 +1,14 @@
+/*
+ *   Color skin RED
+ *   ==============
+ **/
+
+body,
+#content  { background-color: #a70e00; }
+
+#main     { background-image: url(../images/red/bg-header-login.gif); }
+#logo     { background-image: url(../images/red/bg-gradient-login.gif); }
+#content  { background-image: url(../images/red/bg-content-login.gif); }
+
+.formBox input.input           { background-image: url(../images/red/bg-input-login.gif); }
+.formBox input:focus.input     { background-image: url(../images/red/bg-input-login.gif); }
