@@ -41,7 +41,7 @@ html, body, div, p, li, ul, form, set, h1, h2, h3, h4, h5, h6   { margin: 0; pad
 img       { border: none;}
 a         { outline-style: none; }
 html, body    { height: 100%; }
-body          { letter-spacing: 0em; background: #17316a; }
+body          { letter-spacing: 0em; background: #FFF; }
  
 /* -- Links -- */
 a, a:visited, a:active, a:link {  color: #000; text-decoration: underline; outline: none; }

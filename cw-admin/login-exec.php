@@ -24,7 +24,7 @@
 ini_set('display_errors', 1); ini_set('log_errors', 1); ini_set('error_log', dirname(__FILE__) . '/error_log.txt'); error_reporting(E_ALL);
 if(isset($_POST['submit'])) 
 {
-	require('../../includes/configuration.php');
+	require('../includes/configuration.php');
 	/*
 	mysql_connect($host, $user, $pass) or die(mysql_error());
 	mysql_select_db($db);
