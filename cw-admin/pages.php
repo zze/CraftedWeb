@@ -1,5 +1,26 @@
 <?php
-if(isset($_COOKIE['moxxieloggedin']) && $_COOKIE['moxxieloggedin'] == 1)
+/* ___           __ _           _ __    __     _     
+  / __\ __ __ _ / _| |_ ___  __| / / /\ \ \___| |__  
+ / / | '__/ _` | |_| __/ _ \/ _` \ \/  \/ / _ \ '_ \ 
+/ /__| | | (_| |  _| ||  __/ (_| |\  /\  /  __/ |_) |
+\____/_|  \__,_|_|  \__\___|\__,_| \/  \/ \___|_.__/ 
+
+		-[ Created by ©Nomsoft
+		  `-[ Original core by Anthony (Aka. CraftedDev)
+
+				-CraftedWeb Generation II-                  
+			 __                           __ _   							   
+		  /\ \ \___  _ __ ___  ___  ___  / _| |_ 							   
+		 /  \/ / _ \| '_ ` _ \/ __|/ _ \| |_| __|							   
+		/ /\  / (_) | | | | | \__ \ (_) |  _| |_ 							   
+		\_\ \/ \___/|_| |_| |_|___/\___/|_|  \__|	- www.Nomsoftware.com -	   
+                  The policy of Nomsoftware states: Releasing our software   
+                  or any other files are protected. You cannot re-release    
+                  anywhere unless you were given permission.                 
+                  © Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.  */
+?>
+<?php
+if(isset($_COOKIE['craftedloggedin']) && $_COOKIE['craftedloggedin'] == 1)
 {
 	require("../config.php");
 	include("classes.php");
@@ -15,7 +36,7 @@ if(isset($_COOKIE['moxxieloggedin']) && $_COOKIE['moxxieloggedin'] == 1)
     <meta name="description" content="" />
     <meta name="keywords" content="" />
     <meta name="viewport" content="width=device-width">
-    <title>Moxxie admin</title>   
+    <title>CraftedWeb ACP</title>   
     <link href="public/css/default.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="public/css/blue.css" rel="stylesheet" type="text/css" media="screen" /> <!-- color skin: blue / red / green / dark -->
     <link href="public/css/datePicker.css" rel="stylesheet" type="text/css" media="screen" />
@@ -67,7 +88,7 @@ if(isset($_COOKIE['moxxieloggedin']) && $_COOKIE['moxxieloggedin'] == 1)
     <div id="header"> 
       <!-- #logo --> 
       <div id="logo">
-        <a href="index.html" title="Go to Homepage"><span>Great Admin</span></a>
+        <a href="index.html" title="Go to Homepage"><span>CraftedWeb ACP</span></a>
       </div>
       <!-- /#logo -->
       <!-- #user -->                        
@@ -189,7 +210,7 @@ if(isset($_COOKIE['moxxieloggedin']) && $_COOKIE['moxxieloggedin'] == 1)
     <!-- /#sidebar -->
     <!-- #footer -->
     <div id="footer">
-      <p>© 2010 Great Admin | <a href="#main">Top</a></p>
+      <p>© 2011-2012 <a href="http://forums.nomsoftware.com">Nomsoft</a> | <a href="#main">Top</a></p>
     </div>
     <!-- /#footer -->
 	
