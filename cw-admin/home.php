@@ -5,7 +5,7 @@
 / /__| | | (_| |  _| ||  __/ (_| |\  /\  /  __/ |_) |
 \____/_|  \__,_|_|  \__\___|\__,_| \/  \/ \___|_.__/ 
 
-		-[ Created by ©Nomsoft
+		-[ Created by ï¿½Nomsoft
 		  `-[ Original core by Anthony (Aka. CraftedDev)
 
 				-CraftedWeb Generation II-                  
@@ -17,16 +17,17 @@
                   The policy of Nomsoftware states: Releasing our software   
                   or any other files are protected. You cannot re-release    
                   anywhere unless you were given permission.                 
-                  © Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.  */
+                  ï¿½ Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.  */
 ?>
 <?php
 if(isset($_COOKIE['craftedloggedin']) && $_COOKIE['craftedloggedin'] == 1)
 {
 	require("../config.php");
-	include("classes.php");
-	mysql_connect($host, $user, $pass) or die(mysql_error());
-	mysql_select_db($db) or die(mysql_error());
-	mysql_query("SET NAMES UTF8");
+	include("./classes/loader.php");
+	loadClass('db');
+	loadClass('traffic');
+	loadClass('website');
+	
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="cs" lang="cs">
