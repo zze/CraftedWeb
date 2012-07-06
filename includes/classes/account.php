@@ -473,12 +473,13 @@ class account {
 				$errors[] = 'Please enter an email address.';
 			
 			connect::selectDB('logondb');
+			$id = $_SESSION['cw_user_id'];
 			$username = mysql_real_escape_string(trim(strtoupper($_SESSION['cw_user'])));
 			$password = mysql_real_escape_string(trim(strtoupper($current_pass)));
 			
 			$password = sha1("".$username.":".$password."");
 
-			$result = mysql_query("SELECT COUNT(id) FROM account WHERE username='".$username."' AND sha_pass_hash='".$password."'");
+			$result = mysql_query("SELECT COUNT(id) FROM account WHERE id='".$id."' AND sha_pass_hash='".$password."'");
 			if (mysql_result($result,0)==0) 
 				$errors[] = 'The current password is incorrect.';
 			
@@ -488,7 +489,7 @@ class account {
 			    if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) 
 				    $errors[] = 'Enter a valid email address.';
 				 else 
-					 mysql_query("UPDATE account SET email='".$email."' WHERE username='".$_SESSION['cw_user']."'");
+					 mysql_query("UPDATE account SET email='".$email."' WHERE id='".$_SESSION['cw_user_id']."'");
 			}
 			
 		}
@@ -533,12 +534,12 @@ class account {
 				//Lets check if the old password is correct!
 				$username = strtoupper(mysql_real_escape_string($_SESSION['cw_user']));
 				connect::selectDB('logondb');
-				$getPass = mysql_query("SELECT `sha_pass_hash` FROM `account` WHERE `username`='".$username."'");
+				$getPass = mysql_query("SELECT `sha_pass_hash` FROM `account` WHERE `id`='".$_SESSION['cw_user_id']."'");
 				$row = mysql_fetch_assoc($getPass);
 				$thePass = $row['sha_pass_hash'];
 				
 				$pass = mysql_real_escape_string(strtoupper($_POST['cur_pass']));
-				$pass_hash = sha1($username.':'.$pass);
+				$pass_hash = strtoupper(sha1($username.':'.$pass));
 				
 				$new_pass = mysql_real_escape_string(strtoupper($_POST['new_pass']));
 				$new_pass_hash = sha1($username.':'.$new_pass);
@@ -549,7 +550,7 @@ class account {
 				{
 					//success, change password
 					echo 'Your Password was changed!';
-					mysql_query("UPDATE account SET sha_pass_hash='".$new_pass_hash."' WHERE username='".$username."'");
+					mysql_query("UPDATE account SET sha_pass_hash='".$new_pass_hash."' WHERE id='".$_SESSION['cw_user_id']."'");
 					mysql_query("UPDATE account SET v='0' AND s='0' WHERE username='".$username."'");
 				}
 			}
@@ -564,8 +565,8 @@ class account {
 			$pass_hash = sha1($username.':'.$pass);
 			
 			connect::selectDB('logondb');
-			mysql_query("UPDATE `account` SET `sha_pass_hash`='$pass_hash' WHERE `username`='".$username."'");
-			mysql_query("UPDATE `account` SET `v`='0' AND `s`='0' WHERE username='".$username."'");
+			mysql_query("UPDATE `account` SET `sha_pass_hash`='$pass_hash' WHERE `id`='".$_SESSION['cw_user_id']."'");
+			mysql_query("UPDATE `account` SET `v`='0' AND `s`='0' WHERE id='".$_SESSION['cw_user_id']."'");
 			
 			account::logThis("Changed password","passwordchange",NULL);
 	}
