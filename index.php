@@ -19,7 +19,7 @@
 #                  anywhere unless you were given permission.                 
 #                  © Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
 
-    require('includes/loader.php'); //Load all php scripts
+require('includes/loader.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
@@ -34,8 +34,7 @@ echo $website_title .' - ';
 
 while ($page_title = current($GLOBALS['core_pages'])) 
 {
-    if ($page_title == $_GET['p'].'.php') 
-	{
+    if ($page_title == $_GET['p'].'.php'){
         echo key($GLOBALS['core_pages']);
 		$foundPT = true;
     }
@@ -45,12 +44,10 @@ if(!isset($foundPT))
 	echo ucfirst($_GET['p']);
 ?>
 </title>
-
 <?php
 	$content = new Page('styles/'.$template['path'].'/template.html');
-	$content->loadCustoms(); //Load custom modules
-	
-	$content->replace_tags(array('content' => 'modules/content.php')); //Main content 
+	$content->loadCustoms();
+	$content->replace_tags(array('content' => 'modules/content.php'));
 	$content->replace_tags(array('menu' => 'modules/menu.php'));
 	$content->replace_tags(array('login' => 'modules/login.php'));
 	$content->replace_tags(array('account' => 'modules/account.php'));
@@ -62,10 +59,14 @@ if(!isset($foundPT))
 	$content->replace_tags(array('alert' => 'modules/alert.php'));
 ?>
 </head>
-
 <body>
-<?php
-	$content->output();
-?>
+<?php  
+    $dirname = "install/";
+    if (!is_dir($dirname)){  
+		$content->output(); 
+	}else{  
+		echo "<center><h1>The install directory still exists<br>please remove it to view your site.</h2>";  
+    }  
+?> 
 </body>
 </html>
