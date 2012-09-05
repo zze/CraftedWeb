@@ -71,17 +71,20 @@ if (isset($_GET['newsid']))
 	}
 	if (isset($_POST['comment'])) 
 	{
-		if (isset($_POST['text']) && isset($_SESSION['cw_user']) && strlen($_POST['text'])<=1000) 
+		if (isset($_POST['text']) && isset($_SESSION['cw_user']) && strlen($_POST['text']) <= 1000) 
 		{
 			$text = mysql_real_escape_string(trim(htmlentities($_POST['text'])));
 			
-			connect::selectDB('logondb');
-			$getAcct = mysql_query("SELECT id FROM account WHERE username = '".$_SESSION['cw_user']."'"); 
-			$row = mysql_fetch_assoc($getAcct);
-			$acct = $row['id'];
-			
-			connect::selectDB('webdb'); 
-			mysql_query("INSERT INTO news_comments (newsid,text,poster,ip) VALUES ('".$id."','".$text."','".$acct."','".$_SERVER['REMOTE_ADDR']."')");
+			if(!empty($text) and $text != 'Comment this post...')
+			{
+				connect::selectDB('logondb');
+				$getAcct = mysql_query("SELECT id FROM account WHERE username = '".$_SESSION['cw_user']."'"); 
+				$row = mysql_fetch_assoc($getAcct);
+				$acct = $row['id'];
+				
+				connect::selectDB('webdb'); 
+				mysql_query("INSERT INTO news_comments (newsid,text,poster,ip) VALUES ('".$id."','".$text."','".$acct."','".$_SERVER['REMOTE_ADDR']."')");
+			}	
 			
 			header("Location: ?p=news&newsid=".$id);
 		}
