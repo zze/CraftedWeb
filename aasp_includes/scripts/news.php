@@ -35,7 +35,7 @@ if($_POST['function']=='post')
 		die('<span class="red_text">Please enter all fields.</span>');
 
 	mysql_query("INSERT INTO news (title,body,author,image,date) VALUES
-	('".mysql_real_escape_string($_POST['title'])."','".mysql_real_escape_string($_POST['content'])."',
+	('".mysql_real_escape_string($_POST['title'])."','".mysql_real_escape_string(trim(htmlentities($_POST['content'])))."',
 	'".mysql_real_escape_string($_POST['author'])."','".mysql_real_escape_string($_POST['image'])."',
 	'".date("Y-m-d H:i:s")."')");
 	
@@ -58,7 +58,7 @@ elseif($_POST['function']=='edit')
 	$id = (int)$_POST['id'];
 	$title = ucfirst(mysql_real_escape_string($_POST['title']));
 	$author = ucfirst(mysql_real_escape_string($_POST['author']));
-	$content = mysql_real_escape_string($_POST['content']);
+	$content = mysql_real_escape_string(trim(htmlentities($_POST['content'])));
 	
 	if(empty($id) || empty($title) || empty($content))
 	 	die("Please enter both fields.");
@@ -76,7 +76,7 @@ elseif($_POST['function']=='getNewsContent')
 	$row = mysql_fetch_assoc($result);
 	$content = str_replace('<br />', "\n", $row['body']);
 	
-	echo "Title: <br/><input type='text' id='editnews_title' value='".$row['title']."'><br/>Content:<br/><textarea cols='55' rows='8' id='editnews_content'>"
+	echo "Title: <br/><input type='text' id='editnews_title' value='".$row['title']."'><br/>Content:<br/><textarea cols='55' rows='8' id='wysiwyg'>"
 	.$content."</textarea><br/>Author:<br/><input type='text' id='editnews_author' value='".$row['author']."'><br/><input type='submit' value='Save' onclick='editNewsNow(".$row['id'].")'>";
 }
 

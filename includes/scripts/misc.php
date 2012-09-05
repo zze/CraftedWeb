@@ -55,7 +55,7 @@ if(isset($_POST['action']) && $_POST['action']=='editComment')
    mysql_query("UPDATE news_comments SET `text` = '".$content."' WHERE id='".(int)$_POST['id']."'");
    
    mysql_query("INSERT INTO admin_log (full_url, ip, timestamp, action, account, extended_inf) 
-   VALUES('/index.php?page=news','".$_SERVER['REMOTE_ADDR']."', '".time()."', 'Edit a news comment', '".$_SESSION['cw_user_id']."', 
+   VALUES('/index.php?page=news','".$_SERVER['REMOTE_ADDR']."', '".time()."', 'Edited a news comment', '".$_SESSION['cw_user_id']."', 
    'Edited news comment with comment ID: ".(int)$_POST['id']."')");
 }
 #################

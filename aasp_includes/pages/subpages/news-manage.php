@@ -44,7 +44,7 @@ while($row=mysql_fetch_assoc($result)) {
 	 echo '<tr class="center">
 			   <td>'.$row['id'].'</td>
 			   <td>'.$row['title'].'</td>
-			   <td>'.substr($row['body'],0,25).'...</td>
+			   <td>'.strip_tags(substr($row['body'],0,25)).'...</td>
 			   <td>'.mysql_result($comments,0).'</td>
 			   <td> <a onclick="editNews('.$row['id'].')" href="#">Edit</a> &nbsp;  
 			   <a onclick="deleteNews('.$row['id'].')" href="#">Delete</a></td>

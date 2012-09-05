@@ -34,9 +34,7 @@
 <input type="text" value="Title..." id="news_title"/> <br/>
 <input type="text" value="Author..." id="news_author"/> <br/>
 <input type="text" value="Image URL..." id="news_image"/> <br/>
-<textarea cols="72" rows="7" id="news_content">Content...
-
-</textarea>
+<textarea cols="72" rows="7" id="wysiwyg">Content...</textarea>
 <input type="submit" value="Post" onclick="postNews()"/>  <input type="submit" value="Preview" onclick="previewNews()" disabled="disabled"/>                                    
 <?php } ?>
                                     

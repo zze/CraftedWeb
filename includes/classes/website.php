@@ -72,11 +72,11 @@ class website {
 					   $output .= $newsPT1;  
 					   unset($newsPT1);		
 						
-						$text = preg_replace("
+						$text = html_entity_decode(preg_replace("
 						  #((http|https|ftp)://(\S*?\.\S*?))(\s|\;|\)|\]|\[|\{|\}|,|\"|'|:|\<|$|\.\s)#ie",
 						 "'<a href=\"$1\" target=\"_blank\">http://$3</a>$4'",
 						 $row['body']
-						);
+						));
 							
 						if ($GLOBALS['news']['limitHomeCharacters']==true) 
 						{ 
