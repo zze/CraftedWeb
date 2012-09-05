@@ -49,7 +49,18 @@ if (isset($_GET['newsid']))
 	?>
     <hr/>
     <h4 class="yellow_text">Comments</h4>
-    <?php if ($_SESSION['cw_user']) { ?>
+    <?php 
+	
+	connect::selectDB('logondb');
+	$getAcct = mysql_query("SELECT id FROM account WHERE username = '".$_SESSION['cw_user']."'"); 
+	$row = mysql_fetch_assoc($getAcct);
+	$acct = $row['id'];
+	
+	connect::selectDB('webdb'); 
+	
+	$chk = mysql_query("SELECT COUNT(*) FROM `news_comments` WHERE `newsid` = " . $id . " AND `poster` = " . $acct . " ORDER BY id DESC LIMTI 1");
+	if ($_SESSION['cw_user'] and mysql_result($chk, 0) == 0) { 
+	?>
     <form action="?p=news&newsid=<?php echo $id; ?>" method="post">
     <table width="100%"> 
     	<tr> 
@@ -66,6 +77,10 @@ if (isset($_GET['newsid']))
     
     <?php
 	} 
+	elseif(mysql_result($chk, 0) > 0)
+	{
+		echo '<span class="note">You can not post comments in a row!</span>';	
+	}
 	else
 		echo '<span class="note">Log in to comment!</span>';
 	}
@@ -83,7 +98,12 @@ if (isset($_GET['newsid']))
 				$acct = $row['id'];
 				
 				connect::selectDB('webdb'); 
-				mysql_query("INSERT INTO news_comments (newsid,text,poster,ip) VALUES ('".$id."','".$text."','".$acct."','".$_SERVER['REMOTE_ADDR']."')");
+				
+				$chk = mysql_query("SELECT COUNT(*) FROM `news_comments` WHERE `newsid` = " . $id . " AND `poster` = " . $acct . " ORDER BY id DESC LIMTI 1");
+				if(mysql_result($chk, 0) == 0)
+				{
+					mysql_query("INSERT INTO news_comments (newsid,text,poster,ip) VALUES ('".$id."','".$text."','".$acct."','".$_SERVER['REMOTE_ADDR']."')");
+				}
 			}	
 			
 			header("Location: ?p=news&newsid=".$id);
