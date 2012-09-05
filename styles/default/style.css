@@ -31,7 +31,7 @@ body {
 	margin: 0px auto; 
 }
 
-a {color: #4A9DC1; text-decoration:none;}
+a {color: #4A9DC1; text-decoration:none; cursor: pointer;}
 a:hover {color: #ccc}
 
 hr { border-top: 1px solid #363636; border-bottom: 1px solid #161616; border-left: none; border-right: none; }
@@ -40,8 +40,11 @@ h2 { margin: 3px; font-size: 30px; text-shadow: 0px 1px 6px #111; color: #f1f1f1
 h3 { margin: 2px; font-size: 22px; }
 h4 { margin: 1px; font-size: 18px; color: #71B100; }
 
+.realm_status_title_offline { color: #C00; }
+
 table { font-size: 12px !important; }
-input[type="text"] { 
+
+input[type="text"], input[type="password"] { 
 	width: 234px;  
 	border: 1px solid #333; 
 	background-color: #181818; 
@@ -50,17 +53,6 @@ input[type="text"] {
 	height: 13px; 
 	padding-left: 4px; 
 	padding-bottom: 8px;
-}
-
-input[type="password"] { 
-	width: 234px;  
-	border: 1px solid #333; 
-	background-color: #181818; 
-	padding-top: 9px; 
-	color: #777; 
-	height: 13px; 
-	padding-left: 4px; 
-	padding-bottom: 8px; 
 }
 
 input[type="submit"] { 
@@ -102,6 +94,7 @@ input[type="button"] {
 }
 
 input[type="button"]:hover { background-image: url(images/submit_bg_hover.png) }
+
 select { 
 	width: 280px;  
 	border: 1px solid #333; 
@@ -188,9 +181,10 @@ textarea {
 .box_one { 
 	position: fixed; 
 	width: 240px; 
-	height: 180px; 
+	height: auto; 
 	background-color:#191919; 
-	padding: 5px; 
+	padding: 5px;
+	padding-bottom: 8px; 
 	margin-bottom: 20px; 
 	background-image: url(images/content_left_bg.png); 
 	background-repeat:repeat-x;
@@ -198,7 +192,7 @@ textarea {
 	-moz-box-shadow: 0px 0px 14px #000; 
 	-webkit-box-shadow: 0px 0px 14px #000; 
 	box-shadow: 0px 0px 14px #000; 
-	float: left; opacity: 0.68;
+	float: left; opacity: 0.84;
 }
 
 .box_one_title { 
@@ -230,7 +224,7 @@ textarea {
 	background-repeat:repeat-x; 
 	float:left;  
 	border: 1px solid #171717; 
-	opacity: 0.68;
+	opacity: 0.84;
 }
 
 .box_two_title { 
@@ -255,6 +249,7 @@ textarea {
 	width: 500px; 
 	text-align:center; 
 	color: #ccc; 
+	top: 10px;
 }
 
 .yellow_text { color: #FFD31C;	}
@@ -627,28 +622,34 @@ span.moreinfo:hover { opacity:0.78; }
 	width: 560px; 
 	z-index: 99; 
 	display:none;
+	box-shadow: 0px 0px 15px #000;
 }
 
 #popup_title { 
 	position: relative; 
 	width: 550px; 
 	height: 43px; 
-	background-image: url(images/topBar.png); 
-	background-repeat:no-repeat; 
-	padding-top: 9px; 
+	background-image:url(images/box_one_title.png); 
+	background-repeat:repeat-x; 
+	color: #fff;
+	margin-left: 0px; 
+	margin-top: 0px; 
+	margin-bottom: -18px; 
+	padding-top: 7px; 
 	padding-left: 10px; 
 	font-size: 15px; 
+	text-shadow: 0px 1px 1px #111;
 }
 
 #popup_body { 
 	positon: relative;
 	width: 540px; 
 	min-height: 40px;  
-	background-color:#1E1E1E; 
+	background-color:#191919; 
 	padding-left: 10px;
 	padding-bottom: 5px; 
 	padding-right: 10px; 
-	margin-top: -1px; 
+	padding-top: 15px;
 	text-align: center; 
 }
 
@@ -658,6 +659,7 @@ span.moreinfo:hover { opacity:0.78; }
 	height: 66px; 
 	background-image: url(images/botBar.png); 
 	background-repeat:no-repeat;  
+	display: none;
 }
 
 #popup_close { 
@@ -675,18 +677,8 @@ span.moreinfo:hover { opacity:0.78; }
 #popup_close:hover { opacity: 1; }
 
 #popup input[type="button"] { 
-	height: 36px; 
-	background-image:url(images/popupCloseBtn.png); 
-	background-repeat:repeat-x;
-	color: #999; 
-	border: 1px solid #3A3A3A; 
-	text-shadow: none; 
-	opacity: 0.95;  
-}
-
-#popup input[type="button"]:hover { 
-	opacity: 1; 
-	border: 1px solid #5A5A5A;
+	width: 70px;
+	height: 30px;
 }
 
 #popup_close_button { 

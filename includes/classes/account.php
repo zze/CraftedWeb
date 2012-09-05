@@ -59,8 +59,8 @@ class account {
 					$id = $id['id'];
 					
 					self::GMLogin($username);
-					$_SESSION['cw_user']=ucfirst(strtolower($username));
-					$_SESSION['cw_user_id']=$id;
+					$_SESSION['cw_user'] = ucfirst(strtolower($username));
+					$_SESSION['cw_user_id'] = $id;
 					
 					connect::selectDB('webdb');
 					$count = mysql_query("SELECT COUNT(*) FROM account_data WHERE id='".$id."'");

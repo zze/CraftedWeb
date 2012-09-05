@@ -39,6 +39,26 @@ if(isset($_POST['action']) && $_POST['action']=='removeComment')
    mysql_query("DELETE FROM news_comments WHERE id='".(int)$_POST['id']."'");
 }
 #################
+if(isset($_POST['action']) && $_POST['action']=='getComment') 
+{
+   connect::selectDB('webdb');
+   $result = mysql_query("SELECT `text` FROM news_comments WHERE id='".(int)$_POST['id']."'");
+   $row = mysql_fetch_assoc($result);
+   echo $row['text'];
+}
+#################
+if(isset($_POST['action']) && $_POST['action']=='editComment') 
+{
+   $content = mysql_real_escape_string(trim(htmlentities($_POST['content'])));
+	
+   connect::selectDB('webdb');
+   mysql_query("UPDATE news_comments SET `text` = '".$content."' WHERE id='".(int)$_POST['id']."'");
+   
+   mysql_query("INSERT INTO admin_log (full_url, ip, timestamp, action, account, extended_inf) 
+   VALUES('/index.php?page=news','".$_SERVER['REMOTE_ADDR']."', '".time()."', 'Edit a news comment', '".$_SESSION['cw_user_id']."', 
+   'Edited news comment with comment ID: ".(int)$_POST['id']."')");
+}
+#################
 if(isset($_POST['getTos'])) 
 {
    include("../../documents/termsofservice.php");

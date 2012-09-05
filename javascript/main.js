@@ -390,7 +390,31 @@ function removeNewsCommentNow(id)
 		 closePopup()
 		 $("#comment-" + id).fadeOut(); 
 	});
+}
+
+function editNewsComment(id)
+{
+	popUp("Edit comment","Gathering data...");
 	
+	$.post("includes/scripts/misc.php", { action: "getComment", id: id},
+	function(data) {
+		  popUp("Edit comment","<textarea rows='4' id='editCommentContent'>"+data+"</textarea><br/>\
+		  <input type='button' value='Save' onclick='editNewsCommentNow("+id+")'>");   
+	});
+}
+
+function editNewsCommentNow(id)
+{
+	var content = document.getElementById("editCommentContent").value;
+	
+	popUp("Edit comment","Saving...");
+	
+	$.post("includes/scripts/misc.php", { action: "editComment", id: id, content: content},
+	function(data) {
+		$("#comment-" + id + "-content").html(content); 
+		$("#popup").fadeOut();
+		$("#overlay").fadeOut();
+	});
 }
 
 function removeShopItem(entry,shop) 

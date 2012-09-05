@@ -20,7 +20,17 @@
 #                  © Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
  
 ?>
-<?php account::isNotLoggedIn(); ?>
+<?php account::isNotLoggedIn(); 
+
+//Check if trigger is set correctly
+$file_headers = @get_headers($GLOBALS['website_domain'].'includes/misc/paypal_trigger.php');
+if($file_headers[0] == 'HTTP/1.1 404 Not Found') 
+{
+    echo 'This page is not available, since the paypal trigger is not set correctly.';
+}
+else
+{
+?>
 <div class='box_two_title'>Donate</div>
 Enter your desired donation value, and then click the donation button.<br/><hr/>
 <table align="center">
@@ -87,3 +97,4 @@ Enter your desired donation value, and then click the donation button.<br/><hr/>
      <?php } ?>
   </table>
 </center>
+<?php } ?>

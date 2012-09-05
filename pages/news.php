@@ -50,15 +50,10 @@ if (isset($_GET['newsid']))
     <hr/>
     <h4 class="yellow_text">Comments</h4>
     <?php 
-	
-	connect::selectDB('logondb');
-	$getAcct = mysql_query("SELECT id FROM account WHERE username = '".$_SESSION['cw_user']."'"); 
-	$row = mysql_fetch_assoc($getAcct);
-	$acct = $row['id'];
-	
 	connect::selectDB('webdb'); 
 	
-	$chk = mysql_query("SELECT COUNT(*) FROM `news_comments` WHERE `newsid` = " . $id . " AND `poster` = " . $acct . " ORDER BY id DESC LIMTI 1");
+	$chk = mysql_query("SELECT COUNT(*) FROM `news_comments` WHERE `newsid` = " . $id . " AND `poster` = " . $_SESSION['cw_user_id'] . " 
+	ORDER BY id DESC LIMTI 1");
 	if ($_SESSION['cw_user'] and mysql_result($chk, 0) == 0) { 
 	?>
     <form action="?p=news&newsid=<?php echo $id; ?>" method="post">
@@ -135,13 +130,21 @@ if (isset($_GET['newsid']))
 						echo "<br/><span class='blue_text' style='font-size: 11px;'>Staff</span>";
 					?>
                 </div> 
-                <div class="news_comment_body"><?php if(mysql_result($getGM,0)>0) { echo "<span class='blue_text'>"; } ?>
+                <div class="news_comment_body">
+                
+                <?php if(mysql_result($getGM,0)>0) { echo "<span class='blue_text'>"; } ?>
+                
+                <span id="comment-<?php echo $row['id']; ?>-content">
+				
 					<?php echo nl2br(htmlentities($text));
+					
                 if(mysql_result($getGM,0)>0) { echo "</span>"; }
+				
+				echo '</span>';
 				
 				if(isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel']>=$GLOBALS['adminPanel_minlvl'] || 
 				isset($_SESSION['cw_gmlevel']) && $_SESSION['cw_gmlevel']>=$GLOBALS['staffPanel_minlvl'] && $GLOBALS['editNewsComments']==true)
-				 	echo '<br/><br/> ( <a href="#">Edit</a> | <a href="#remove" onclick="removeNewsComment('.$row['id'].')">Remove</a> )';  
+				 	echo '<br/><br/> ( <a href="#" onclick="editNewsComment('.$row['id'].')">Edit</a> | <a href="#remove" onclick="removeNewsComment('.$row['id'].')">Remove</a> )';  
 			   ?>
                <div class='news_count'>
                		<?php echo '#'.$c; ?>
