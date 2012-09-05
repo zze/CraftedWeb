@@ -52,9 +52,9 @@ if (isset($_GET['newsid']))
     <?php 
 	connect::selectDB('webdb'); 
 	
-	$chk = mysql_query("SELECT COUNT(*) FROM `news_comments` WHERE `newsid` = " . $id . " AND `poster` = " . $_SESSION['cw_user_id'] . " 
-	ORDER BY id DESC LIMTI 1");
-	if ($_SESSION['cw_user'] and mysql_result($chk, 0) == 0) { 
+	$chk = mysql_query("SELECT poster FROM `news_comments` WHERE `newsid` = " . $id . " ORDER BY id DESC LIMTI 1");
+	$chkrow = mysql_fetch_assoc($chk);
+	if ($_SESSION['cw_user'] and $chkrow['poster'] != $_SESSION['cw_user_id']) { 
 	?>
     <form action="?p=news&newsid=<?php echo $id; ?>" method="post">
     <table width="100%"> 
@@ -72,7 +72,7 @@ if (isset($_GET['newsid']))
     
     <?php
 	} 
-	elseif(mysql_result($chk, 0) > 0)
+	elseif($chkrow['poster'] == $_SESSION['cw_user_id'])
 	{
 		echo '<span class="note">You can not post comments in a row!</span>';	
 	}
@@ -87,17 +87,14 @@ if (isset($_GET['newsid']))
 			
 			if(!empty($text) and $text != 'Comment this post...')
 			{
-				connect::selectDB('logondb');
-				$getAcct = mysql_query("SELECT id FROM account WHERE username = '".$_SESSION['cw_user']."'"); 
-				$row = mysql_fetch_assoc($getAcct);
-				$acct = $row['id'];
-				
 				connect::selectDB('webdb'); 
 				
-				$chk = mysql_query("SELECT COUNT(*) FROM `news_comments` WHERE `newsid` = " . $id . " AND `poster` = " . $acct . " ORDER BY id DESC LIMTI 1");
-				if(mysql_result($chk, 0) == 0)
+				$chk = mysql_query("SELECT poster FROM `news_comments` WHERE `newsid` = " . $id . " ORDER BY id DESC LIMTI 1");
+				$chkrow = mysql_fetch_assoc($chk);
+				if($chkrow['poster'] != $_SESSION['cw_user_id'])
 				{
-					mysql_query("INSERT INTO news_comments (newsid,text,poster,ip) VALUES ('".$id."','".$text."','".$acct."','".$_SERVER['REMOTE_ADDR']."')");
+					mysql_query("INSERT INTO news_comments (newsid,text,poster,ip) 
+					VALUES ('".$id."','".$text."','".$_SESSION['cw_user_id']."','".$_SERVER['REMOTE_ADDR']."')");
 				}
 			}	
 			
