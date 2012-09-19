@@ -571,7 +571,7 @@ class account {
 			account::logThis("Changed password","passwordchange",NULL);
 	}
 	
-	public static function changeForgotPassword($account_name,$password) 
+	public static function changeForgottenPassword($account_name,$password) 
 	{
 			connect::selectDB('logondb');
 			$result = mysql_query("SELECT * FROM account WHERE username='".$account_name."'");
