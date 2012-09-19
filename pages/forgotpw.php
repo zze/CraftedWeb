@@ -43,7 +43,7 @@ if(isset($_GET['code']) || isset($_GET['account'])) {
 		 mysql_query("DELETE FROM password_reset WHERE account_id = '".$account."'");
 		 $account_name = account::getAccountName($account);
 		 
-		 account::changePassword($account_name,$newPass);
+		 account::changeForgottenPassword($account_name,$newPass);
 		 
 		 $ignoreForgotForm = true;
 	 }
