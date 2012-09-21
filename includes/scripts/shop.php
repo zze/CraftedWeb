@@ -30,16 +30,16 @@ require('../classes/shop.php');
 connect::connectToDB();
 
 
-if($_POST['action']=='removeFromCart') 
+if($_POST['action'] == 'removeFromCart') 
 {
 	unset($_SESSION[$_POST['cart']][$_POST['entry']]);
 	return;
 }
 
-if($_POST['action']=='addShopitem') 
+if($_POST['action'] == 'addShopitem') 
 {
    $entry = (int)$_POST['entry'];
-   $shop = mysql_real_escape_string($_POST['shop']);
+   $shop =  mysql_real_escape_string($_POST['shop']);
 	
    if(isset($_SESSION[$_POST['cart']][$entry]))
 		$_SESSION[$_POST['cart']][$entry]['quantity']++;
@@ -47,35 +47,33 @@ if($_POST['action']=='addShopitem')
    {
 	connect::selectDB('webdb');
 
-	$result = mysql_query('SELECT entry,price FROM shopitems WHERE entry="'.$entry.'" AND in_shop="'.$shop.'"');
-	if(mysql_num_rows($result)!=0) 
+	$result = mysql_query('SELECT entry, price FROM shopitems WHERE entry="'.$entry.'" AND in_shop="'.$shop.'"');
+	if(mysql_num_rows($result) != 0) 
 	{
 		$row = mysql_fetch_array($result);
-		$_SESSION[$_POST['cart']][$row['entry']] = array("quantity" => 1, "price" => $row['price']);
+		$_SESSION[$_POST['cart']][$row['entry']] = array('quantity' => 1, 'price' => $row['price']);
 	} 
   }
 }
 
-if($_POST['action']=='clear') 
+if($_POST['action'] == 'clear') 
 {
 	unset($_SESSION['donateCart']);
 	unset($_SESSION['voteCart']);
 }
 
-if($_POST['action']=='getMinicart') 
+if($_POST['action'] == 'getMinicart') 
 {
-	$num = 0;
+	$num        = 0;
 	$totalPrice = 0;
 	
-	if($_POST['cart']=="donateCart")
-	   $curr = $GLOBALS['donation']['coins_name'];
-	else 
-	   $curr = "Vote Points"; 
+	
+	$curr = ($_POST['cart'] == 'donateCart' ? $GLOBALS['donation']['coins_name'] : 'Vote Points');
 	
 	if(!isset($_SESSION[$_POST['cart']]))
 	{
 		echo "<b>Show Cart:</b> 0 Items (0 ".$curr.")";
-		exit();
+		exit;
 	}
 	
 	connect::selectDB('webdb');
@@ -83,9 +81,10 @@ if($_POST['action']=='getMinicart')
 	{
 		    $num = $num + $_SESSION[$_POST['cart']][$entry]['quantity'];
 			
-			$shop_filt = substr($_POST['cart'],0,-4);
+			$shop_filt = substr($_POST['cart'], 0, -4);
 
-			$result = mysql_query("SELECT price FROM shopitems WHERE entry='".$entry."' AND in_shop='".mysql_real_escape_string($shop_filt)."'");
+			$result = mysql_query("SELECT price FROM shopitems WHERE entry='".$entry."' 
+			AND in_shop='".mysql_real_escape_string($shop_filt)."'");
 			$row = mysql_fetch_assoc($result);
 
 			
@@ -95,9 +94,9 @@ if($_POST['action']=='getMinicart')
 	echo "<b>Show Cart:</b> ".$num." Items (".$totalPrice." ".$curr.")";
 }
 
-if($_POST['action']=='saveQuantity') 
+if($_POST['action'] == 'saveQuantity') 
 {
-	if($_POST['quantity']==0)
+	if($_POST['quantity']==0 or $_POST['quantity'] < 0)
 		unset($_SESSION[$_POST['cart']][$_POST['entry']]);
 	else	
 	    $_SESSION[$_POST['cart']][$_POST['entry']]['quantity'] = $_POST['quantity'];
@@ -107,7 +106,7 @@ if($_POST['action']=='checkout')
 {
 	$totalPrice = 0;
 	
-	$values = explode('*',$_POST['values']);
+	$values = explode('*', $_POST['values']);
 	
 	connect::selectDB('webdb');
 	require('../misc/ra.php');
@@ -126,28 +125,28 @@ if($_POST['action']=='checkout')
 	  }
 	
 			
-	  if(account::hasDP($_SESSION['cw_user'],$totalPrice)==FALSE)
+	  if(account::hasDP($_SESSION['cw_user'], $totalPrice) == FALSE)
 		  die("You do not have enough ".$GLOBALS['donation']['coins_name']."!");
 
-	  $host = $GLOBALS['realms'][$values[1]]['host'];
+	  $host      = $GLOBALS['realms'][$values[1]]['host'];
 	  $rank_user = $GLOBALS['realms'][$values[1]]['rank_user'];
 	  $rank_pass = $GLOBALS['realms'][$values[1]]['rank_pass'];
-	  $ra_port = $GLOBALS['realms'][$values[1]]['ra_port'];
+	  $ra_port   = $GLOBALS['realms'][$values[1]]['ra_port'];
 	  
 	  foreach($_SESSION['donateCart'] as $entry => $value) 
 	  {
-		  if($_SESSION['donateCart'][$entry]['quantity']>12) 
+		  if($_SESSION['donateCart'][$entry]['quantity'] > 12) 
 		  {
 			$num = $_SESSION['donateCart'][$entry]['quantity'];
 			
-			while($num>0) 
+			while($num > 0) 
 			{
-				if($num>12) 
+				if($num > 12) 
 				$command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":12 ";
 				else
 				$command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$num." ";
-				 shop::logItem("donate",$entry,$values[0],account::getAccountID($_SESSION['cw_user']),$values[1],$num);
-				 sendRA($command,$rank_user,$rank_pass,$host,$ra_port);	
+				 shop::logItem("donate", $entry, $values[0], account::getAccountID($_SESSION['cw_user']), $values[1], $num);
+				 sendRA($command, $rank_user, $rank_pass, $host, $ra_port);	
 			 
 				$num = $num - 12;
 				} 
@@ -156,12 +155,13 @@ if($_POST['action']=='checkout')
 		  else 
 		  {
 		    $command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$_SESSION['donateCart'][$entry]['quantity']." ";
-			shop::logItem("donate",$entry,$values[0],account::getAccountID($_SESSION['cw_user']),$values[1],$_SESSION['donateCart'][$entry]['quantity']);
-		    sendRA($command,$rank_user,$rank_pass,$host,$ra_port);	
+			shop::logItem("donate", $entry, $values[0], account::getAccountID($_SESSION['cw_user']), $values[1],
+			$_SESSION['donateCart'][$entry]['quantity']);
+		    sendRA($command, $rank_user, $rank_pass, $host, $ra_port);	
 		  }
 	  }
 	  
-	   account::deductDP(account::getAccountID($_SESSION['cw_user']),$totalPrice);
+	   account::deductDP(account::getAccountID($_SESSION['cw_user']), $totalPrice);
 	   unset($_SESSION['donateCart']);
 	}
    ######
@@ -179,7 +179,7 @@ if($_POST['action']=='checkout')
 		$totalPrice = $totalPrice + $add;
 	  }
 	  
-	  if(account::hasVP($_SESSION['cw_user'],$totalPrice)==FALSE)
+	  if(account::hasVP($_SESSION['cw_user'], $totalPrice) == FALSE)
 		  die("You do not have enough Vote Points!");
 
 	  $host = $GLOBALS['realms'][$values[1]]['host'];
@@ -189,13 +189,13 @@ if($_POST['action']=='checkout')
 	  
 	  foreach($_SESSION['voteCart'] as $entry => $value) 
 	  {
-		  if($_SESSION['voteCart'][$entry]['quantity']>12) 
+		  if($_SESSION['voteCart'][$entry]['quantity'] > 12) 
 		  {
 			$num = $_SESSION['voteCart'][$entry]['quantity'];
 			
-			while($num>0) 
+			while($num > 0) 
 			{
-				if($num>12) 
+				if($num > 12) 
 				$command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":12 ";
 				else
 					$command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$num." ";
@@ -212,17 +212,17 @@ if($_POST['action']=='checkout')
 		    sendRA($command,$rank_user,$rank_pass,$host,$ra_port);	
 		  }
 	  }
-	  account::deductVP(account::getAccountID($_SESSION['cw_user']),$totalPrice);
+	  account::deductVP(account::getAccountID($_SESSION['cw_user']), $totalPrice);
 	  unset($_SESSION['voteCart']);
    }
    ######
    echo TRUE;
 }
 
-if($_POST['action']=='removeItem')
+if($_POST['action'] == 'removeItem')
 {
-	if(account::isGM($_SESSION['cw_user'])==FALSE) 
-    	exit();
+	if(account::isGM($_SESSION['cw_user']) == FALSE) 
+    	exit;
 	
 	$entry = (int)$_POST['entry'];
 	$shop = mysql_real_escape_string($_POST['shop']);
@@ -231,13 +231,13 @@ if($_POST['action']=='removeItem')
 	mysql_query("DELETE FROM shopitems WHERE entry='".$entry."' AND in_shop='".$shop."'");
 }
 
-if($_POST['action']=='editItem')
+if($_POST['action'] == 'editItem')
 {
 	if(account::isGM($_SESSION['cw_user'])==FALSE) 
     	exit();
 	
 	$entry = (int)$_POST['entry'];
-	$shop = mysql_real_escape_string($_POST['shop']);
+	$shop  = mysql_real_escape_string($_POST['shop']);
 	$price = (int)$_POST['price'];
 	
 	connect::selectDB('webdb');
