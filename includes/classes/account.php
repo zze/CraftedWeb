@@ -577,15 +577,17 @@ class account {
 			$result = mysql_query("SELECT * FROM account WHERE username='".$account_name."'");
 			$row = mysql_fetch_array($result);
 
-			$username = mysql_real_escape_string(strtoupper($account_name));
-			$pass = mysql_real_escape_string(strtoupper($password));
-			$pass_hash = sha1($username.':'.$pass);
+			if($row)
+			{
+				$username = mysql_real_escape_string(strtoupper($account_name));
+				$pass = mysql_real_escape_string(strtoupper($password));
+				$pass_hash = sha1($username.':'.$pass);
 
-			connect::selectDB('logondb');
-			mysql_query("UPDATE `account` SET `sha_pass_hash`='$pass_hash' WHERE `id`='".$row['id']."'");
-			mysql_query("UPDATE `account` SET `v`='0' AND `s`='0' WHERE id='".$row['id']."'");
+				connect::selectDB('logondb');
+				mysql_query("UPDATE `account` SET `sha_pass_hash`='$pass_hash', `v`='0', `s`='0' WHERE `id`='".$row['id']."'");
 
-			account::logThis("Changed password","passwordchange",NULL);		
+				account::logThis("Changed password","passwordchange",NULL);
+			}	
 	 }
 	
 	public static function forgotPW($account_name, $account_email) 
