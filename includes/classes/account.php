@@ -574,6 +574,7 @@ class account {
 	public static function changeForgottenPassword($account_name,$password) 
 	{
 			connect::selectDB('logondb');
+			$username = mysql_real_escape_string(strtoupper($account_name));
 			$result = mysql_query("SELECT * FROM account WHERE username='".$account_name."'");
 			$row = mysql_fetch_array($result);
 
@@ -585,8 +586,8 @@ class account {
 
 				connect::selectDB('logondb');
 				mysql_query("UPDATE `account` SET `sha_pass_hash`='$pass_hash', `v`='0', `s`='0' WHERE `id`='".$row['id']."'");
-
-				account::logThis("Changed password","passwordchange",NULL);
+				
+				account::logThis($account_name." Successfully recovered password","passwordrecoverd",NULL);
 			}	
 	 }
 	
