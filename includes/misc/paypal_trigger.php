@@ -129,14 +129,7 @@ if ($resp == 'VERIFIED')
 }
 else if ($resp == 'INVALID')
 {
-	if($GLOBALS['donation']['donationType']==2)
-	{
-		 mysql_query("INSERT INTO payments_log(userid,paymentstatus,buyer_email,firstname,
-		 lastname,mc_gross,paymentdate,datecreation) values ('".$custom."','".$payment_status." - INVALID FUUUU ".$_POST['mc_gross']."','".$payer_email."',
-		 '".$first_name."','".$last_name."','".$mc_gross."','".$payment_date."','".$fecha."')");
-	}
-	
- mail($GLOBALS['donation']['copyTo'],"INVALID Donation","A payment was invalid. Information is shown below: <br/>
+		 mail($GLOBALS['donation']['copyTo'],"INVALID Donation","A payment was invalid. Information is shown below: <br/>
 		  User ID : ".$custom."
 		  Buyer Email: ".$payer_email."
 		  Amount: ".$mc_gross." USD
@@ -150,7 +143,8 @@ else if ($resp == 'INVALID')
 		  Best regards.
 		  The Management");
 	
-		 mysql_query("INSERT INTO payments_log(userid,paymentstatus,buyer_email,firstname,lastname,mc_gross,paymentdate,datecreation) values ('".$custom."','".$payment_status." - INVALID','".$payer_email."','".$first_name."','".$last_name."','".$mc_gross."','".$payment_date."','".$fecha."')");
+		 mysql_query("INSERT INTO payments_log(userid,paymentstatus,buyer_email,firstname,lastname,mc_gross,paymentdate,datecreation) 
+		 VALUES ('".$custom."','".$payment_status." - INVALID','".$payer_email."','".$first_name."','".$last_name."','".$mc_gross."','".$payment_date."','".$fecha."')");
     }
  }
 
