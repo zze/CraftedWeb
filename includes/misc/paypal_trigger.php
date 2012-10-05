@@ -107,11 +107,11 @@ if ($resp == 'VERIFIED')
 	$res = fgets ($fp, 1024);
 	if($payment_status=="Completed")
 	{
-		if($GLOBALS['donation']['donationType']==2)
+		mysql_query("INSERT INTO payments_log(userid,paymentstatus,buyer_email,firstname,lastname,mc_gross,paymentdate,datecreation) 
+		 ('".$custom."','".$mc_gross."','".$payer_email."','".$first_name."','".$last_name."','".$mc_gross."','".$payment_date."','".$fecha."')");
+		
+		if($GLOBALS['donation']['donationType'] == 2)
 		{
-			mysql_query("INSERT INTO payments_log(userid,paymentstatus,buyer_email,firstname,lastname,mc_gross,paymentdate,datecreation) values ('".$custom."',
-			'".$mc_gross."','".$payer_email."','".$first_name."','".$last_name."','".$mc_gross."','".$payment_date."','".$fecha."')");
-			
 			for ($row = 0; $row < count($GLOBALS['donationList']); $row++)
 			{
 				$coins = $mc_gross;
@@ -119,7 +119,7 @@ if ($resp == 'VERIFIED')
 					mysql_query("UPDATE account_data SET dp=dp + ".$GLOBALS['donationList'][$row][1]." WHERE id='".$custom."'");
 			}
 		}
-		elseif($GLOBALS['donation']['donationType']==2)
+		elseif($GLOBALS['donation']['donationType'] == 1)
 		{
 			$coins = ceil($mc_gross);
 			mysql_query("UPDATE account_data SET dp=dp + ".$coins." WHERE id='".$custom."'");
