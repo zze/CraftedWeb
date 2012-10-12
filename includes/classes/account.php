@@ -575,18 +575,16 @@ class account {
 	{
 			connect::selectDB('logondb');
 			$username = mysql_real_escape_string(strtoupper($account_name));
-			$result = mysql_query("SELECT * FROM account WHERE username='".$account_name."'");
+			$result = mysql_query("SELECT * FROM account WHERE username='".$username."'");
 			$row = mysql_fetch_array($result);
 
 			if($row)
 			{
-				$username = mysql_real_escape_string(strtoupper($account_name));
-				$pass = mysql_real_escape_string(strtoupper($password));
-				$pass_hash = sha1($username.':'.$pass);
+				$password = mysql_real_escape_string(strtoupper($password));
+				$password_hash = sha1($username.':'.$password);
 
 				connect::selectDB('logondb');
-				mysql_query("UPDATE `account` SET `sha_pass_hash`='$pass_hash', `v`='0', `s`='0' WHERE `id`='".$row['id']."'");
-				
+				mysql_query("UPDATE `account` SET `sha_pass_hash`='".$password_hash."', `v`='0', `s`='0' WHERE `id`='".$row['id']."'");
 				account::logThis($account_name." Successfully recovered password","passwordrecoverd",NULL);
 			}	
 	 }
