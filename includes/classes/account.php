@@ -580,8 +580,8 @@ class account {
 
 			if($row)
 			{
-				$password = mysql_real_escape_string(strtoupper($password));
-				$password_hash = sha1($username.':'.$password);
+				$password = strtoupper($password);
+				$password_hash = mysql_real_escape_string(sha1($username.':'.$password));
 
 				connect::selectDB('logondb');
 				mysql_query("UPDATE `account` SET `sha_pass_hash`='".$password_hash."', `v`='0', `s`='0' WHERE `id`='".$row['id']."'");
