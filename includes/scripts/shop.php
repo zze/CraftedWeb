@@ -177,63 +177,76 @@ if($_POST['action']=='checkout')
                     $qty = $num > 12 ? 12 : $num;
                     $command = "send items ".$character." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$qty." ";
 
-                    if (sendRA($command, $rank_user, $rank_pass, $host, $ra_port))
+                    if ($error = sendRA($command, $rank_user, $rank_pass, $host, $ra_port))
+                    {
+                        echo 'Connection problems...Aborting | Error: '.$error;
+                        exit;
+                    }
+                    else
                     {
                         shop::logItem("donate", $entry, $values[0], $accountID, $values[1], $qty);
                         account::deductDP($accountID, $info['price'] * $qty);
+                        // Update quantity incase of errors on the next loop
+                        $_SESSION['donateCart'][$entry]['quantity'] -= $qty;
                     }
 
                     $num = $num - $qty;
                 }
+                // All $entry have been sent
+                unset($_SESSION['donateCart'][$entry]);
             }
         }
+        // Empty donateCart
         unset($_SESSION['donateCart']);
     }
    ######
 
    if(isset($_SESSION['voteCart']))
    {
-	 #####Donation Cart
-	 foreach($_SESSION['voteCart'] as $entry => $value)
-	 {
-		$result = mysql_query("SELECT price FROM shopitems WHERE entry='".$entry."' AND in_shop='vote'");
-		$row = mysql_fetch_assoc($result);
+       $entrys = array_keys($_SESSION['voteCart']);
+       if (count($entrys) > 0)
+       {
+           foreach($_SESSION['voteCart'] as $entry => $value)
+     {
+        $result = mysql_query("SELECT price FROM shopitems WHERE entry='".$entry."' AND in_shop='vote'");
+        $row = mysql_fetch_assoc($result);
 
-		$add = $row['price'] * $_SESSION['voteCart'][$entry]['quantity'];
+        $add = $row['price'] * $_SESSION['voteCart'][$entry]['quantity'];
 
-		$totalPrice = $totalPrice + $add;
-	  }
+        $totalPrice = $totalPrice + $add;
+      }
 
-	  if(account::hasVP($_SESSION['cw_user'], $totalPrice) == FALSE)
-		  die("You do not have enough Vote Points!");
+      if(account::hasVP($_SESSION['cw_user'], $totalPrice) == FALSE)
+          die("You do not have enough Vote Points!");
 
-	  foreach($_SESSION['voteCart'] as $entry => $value)
-	  {
-		  if($_SESSION['voteCart'][$entry]['quantity'] > 12)
-		  {
-			$num = $_SESSION['voteCart'][$entry]['quantity'];
+      foreach($_SESSION['voteCart'] as $entry => $value)
+      {
+          if($_SESSION['voteCart'][$entry]['quantity'] > 12)
+          {
+            $num = $_SESSION['voteCart'][$entry]['quantity'];
 
-			while($num > 0)
-			{
-				if($num > 12)
-				$command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":12 ";
-				else
-					$command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$num." ";
-				 shop::logItem("vote",$entry,$values[0],account::getAccountID($_SESSION['cw_user']),$values[1],$num);
-		         sendRA($command,$rank_user,$rank_pass,$host,$ra_port);
-					$num = $num - 12;
-				}
+            while($num > 0)
+            {
+                if($num > 12)
+                $command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":12 ";
+                else
+                    $command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$num." ";
+                 shop::logItem("vote",$entry,$values[0],account::getAccountID($_SESSION['cw_user']),$values[1],$num);
+                 sendRA($command,$rank_user,$rank_pass,$host,$ra_port);
+                    $num = $num - 12;
+                }
 
-		  }
-		  else
-		  {
-		    $command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$_SESSION['voteCart'][$entry]['quantity']." ";
-			shop::logItem("vote",$entry,$values[0],account::getAccountID($_SESSION['cw_user']),$values[1],$_SESSION['voteCart'][$entry]['quantity']);
-		    sendRA($command,$rank_user,$rank_pass,$host,$ra_port);
-		  }
-	  }
-	  account::deductVP(account::getAccountID($_SESSION['cw_user']), $totalPrice);
-	  unset($_SESSION['voteCart']);
+          }
+          else
+          {
+            $command = "send items ".character::getCharname($values[0],$values[1])." \"Your requested item\" \"Thanks for supporting us!\" ".$entry.":".$_SESSION['voteCart'][$entry]['quantity']." ";
+            shop::logItem("vote",$entry,$values[0],account::getAccountID($_SESSION['cw_user']),$values[1],$_SESSION['voteCart'][$entry]['quantity']);
+            sendRA($command,$rank_user,$rank_pass,$host,$ra_port);
+          }
+      }
+      account::deductVP(account::getAccountID($_SESSION['cw_user']), $totalPrice);
+      unset($_SESSION['voteCart']);
+       }
    }
    ######
    echo TRUE;

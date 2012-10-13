@@ -34,10 +34,10 @@ function sendRA($command,$ra_user,$ra_pass,$server,$realm_port)
 		fputs($telnet, $command."\n");
 		sleep(3);
 		fclose($telnet);
-        return true;
+        return;
 	}
 	else
-        return false;
+        return $error_str;
 		#die('Connection problems...Aborting | Error: '.$error_str);
 }
 ?>
