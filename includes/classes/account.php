@@ -511,16 +511,16 @@ class account {
 	
 	//Used for the change password page.
 	public static function changePass($old,$new,$new_repeat) 
-	{
-		$_POST['cur_pass']=mysql_real_escape_string(trim($old));
-		$_POST['new_pass']=mysql_real_escape_string(trim($new));
-		$_POST['new_pass_repeat']=mysql_real_escape_string(trim($new_repeat));
-		
+	{	
 		//Check if all field values has been typed into
 		if (!isset($_POST['cur_pass']) || !isset($_POST['new_pass']) || !isset($_POST['new_pass_repeat'])) 
 			echo '<b class="red_text">Please type in all fields!</b>';
 	    else 
 		{
+            $_POST['cur_pass']=mysql_real_escape_string(trim($old));
+            $_POST['new_pass']=mysql_real_escape_string(trim($new));
+            $_POST['new_pass_repeat']=mysql_real_escape_string(trim($new_repeat));
+            
 			//Check if new passwords match?
 			if ($_POST['new_pass'] != $_POST['new_pass_repeat'])
 				echo '<b class="red_text">The new passwords doesnt match!</b>';
@@ -539,7 +539,7 @@ class account {
 				$thePass = $row['sha_pass_hash'];
 				
 				$pass = mysql_real_escape_string(strtoupper($_POST['cur_pass']));
-				$pass_hash = strtoupper(sha1($username.':'.$pass));
+				$pass_hash = sha1($username.':'.$pass);
 				
 				$new_pass = mysql_real_escape_string(strtoupper($_POST['new_pass']));
 				$new_pass_hash = sha1($username.':'.$new_pass);
@@ -550,8 +550,7 @@ class account {
 				{
 					//success, change password
 					echo 'Your Password was changed!';
-					mysql_query("UPDATE account SET sha_pass_hash='".$new_pass_hash."' WHERE id='".$_SESSION['cw_user_id']."'");
-					mysql_query("UPDATE account SET v='0' AND s='0' WHERE username='".$username."'");
+					mysql_query("UPDATE account SET sha_pass_hash='".$new_pass_hash."', v='0', s='0' WHERE id='".$_SESSION['cw_user_id']."'");
 				}
 			}
 		  }
@@ -565,8 +564,7 @@ class account {
 			$pass_hash = sha1($username.':'.$pass);
 			
 			connect::selectDB('logondb');
-			mysql_query("UPDATE `account` SET `sha_pass_hash`='$pass_hash' WHERE `id`='".$_SESSION['cw_user_id']."'");
-			mysql_query("UPDATE `account` SET `v`='0' AND `s`='0' WHERE id='".$_SESSION['cw_user_id']."'");
+			mysql_query("UPDATE `account` SET `sha_pass_hash`='{$pass_hash}', v='0', s='0' WHERE `id`='".$_SESSION['cw_user_id']."'");
 			
 			account::logThis("Changed password","passwordchange",NULL);
 	}
@@ -725,7 +723,7 @@ class account {
 			$account = (int)$_SESSION['cw_user_id'];
 			
 			connect::selectDB('webdb');
-			mysql_query("INSERT INTO user_log VALUES('','".$account."','".$service."','".time()."','".$_SERVER['REMOTE_ADDR']."','".$realmid."','".$desc."')");
+			mysql_query("INSERT INTO user_log VALUES(NULL,'".$account."','".$service."','".time()."','".$_SERVER['REMOTE_ADDR']."','".$realmid."','".$desc."')");
 	}
 }
 ?>

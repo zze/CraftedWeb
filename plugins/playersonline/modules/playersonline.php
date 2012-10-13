@@ -20,6 +20,8 @@
 #                  © Nomsoftware 'Nomsoft' 2011-2012. All rights reserved.    
  
 	connect::selectDB('webdb');
+    if (!isset($GLOBALS['playersOnline']))
+        return;
 	$result = mysql_query("SELECT id,name FROM realms WHERE id='".$GLOBALS['playersOnline']['realm_id']."'");
 	$row = mysql_fetch_assoc($result);
 	$rid = $row['id'];
