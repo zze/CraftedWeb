@@ -65,7 +65,8 @@ if($_POST['action'] == 'clear')
 }
 
 if($_POST['action'] == 'getMinicart')
-{	$curr = ($_POST['cart'] == 'donateCart' ? $GLOBALS['donation']['coins_name'] : 'Vote Points');
+{
+    $curr = ($_POST['cart'] == 'donateCart' ? $GLOBALS['donation']['coins_name'] : 'Vote Points');
 
 	if(!isset($_SESSION[$_POST['cart']]))
 	{
