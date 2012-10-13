@@ -121,7 +121,7 @@ if($_POST['action'] == 'saveQuantity')
 }
 
 
-function process_cart($cart, $character, $accountID, $realm)
+function process_cart($cart, $charaID, $character, $accountID, $realm)
 {
     if (!isset($_SESSION[$cart.'Cart']))
         return;
@@ -179,7 +179,7 @@ function process_cart($cart, $character, $accountID, $realm)
                 }
                 else
                 {
-                    shop::logItem($cart, $entry, $values[0], $accountID, $values[1], $qty);
+                    shop::logItem($cart, $entry, $charaID, $accountID, $realm, $qty);
                     if ($cart == 'donate')
                         account::deductDP($accountID, $info['price'] * $qty);
                     else
@@ -208,8 +208,8 @@ if($_POST['action']=='checkout')
 
     connect::selectDB('webdb');
     require('../misc/ra.php');
-    process_cart('donate', $character, $accountID, $realm);
-    process_cart('vote', $character, $accountID, $realm);
+    process_cart('donate', $values[0], $character, $accountID, $realm);
+    process_cart('vote', $values[0], $character, $accountID, $realm);
     echo TRUE;
 }
 
