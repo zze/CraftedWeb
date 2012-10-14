@@ -610,7 +610,7 @@ class account {
 			{
 				//Success, lets send an email & add the forgotpw thingy.
 				$code = RandomString();
-				website::sendEmail($account_email,$GLOBALS['default_email'],'Forgot Password',"
+				$emailSent = website::sendEmail($account_email,$GLOBALS['default_email'],'Forgot Password',"
 				Hello there. <br/><br/>
 				A password reset has been requested for the account ".$account_name." <br/>
 				If you wish to reset your password, click the following link: <br/>
@@ -621,17 +621,24 @@ class account {
 
 				If you did not request this, just ignore this message.<br/><br/>
 				Sincerely, The Management.");
-				$account_id = self::getAccountID($account_name);
-				connect::selectDB('webdb');
+                if ($emailSent)
+                {
+				    $account_id = self::getAccountID($account_name);
+				    connect::selectDB('webdb');
 
-				mysql_query("DELETE FROM password_reset WHERE account_id='".$account_id."'");
-				mysql_query("INSERT INTO password_reset (code,account_id)
-				VALUES ('".$code."','".$account_id."')");
-				echo "An email containing a link to reset your password has been sent to the Email address you specified.
-					  If you've tried to send other forgot password requests before this, they won't work. <br/>";
-				}
+				    mysql_query("DELETE FROM password_reset WHERE account_id='".$account_id."'");
+				    mysql_query("INSERT INTO password_reset (code,account_id)
+				    VALUES ('".$code."','".$account_id."')");
+				    echo "An email containing a link to reset your password has been sent to the Email address you specified.
+					      If you've tried to send other forgot password requests before this, they won't work. <br/>";
+                }
+                else
+                {
+                    echo '<h4 class="red_text">Failed to send email! (Check error logs for details)</h4>';
+                }
 			}
 		}
+	}
 
 		public static function hasVP($account_name,$points)
 		{
