@@ -334,7 +334,7 @@ class shop {
 	{
 		connect::selectDB('webdb');
 		date_default_timezone_set($GLOBALS['timezone']);
-		mysql_query("INSERT INTO shoplog VALUES ('','".(int)$entry."','".(int)$char_id."','".date("Y-m-d H:i:s")."',
+		mysql_query("INSERT INTO shoplog VALUES (NULL,'".(int)$entry."','".(int)$char_id."','".date("Y-m-d H:i:s")."',
 		'".$_SERVER['REMOTE_ADDR']."','".mysql_real_escape_string($shop)."','".(int)$account."','".(int)$realm_id."','".(int)$amount."')");
 	}
 	
