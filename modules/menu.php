@@ -36,8 +36,8 @@ else
  {
 	 $curr = substr($row['url'],3);
 	 if ($_GET['p']==$curr)
-		 echo '<a href="'.$row['url'].'" class="current">'.$row['title'].'</a>';
+			 echo '<li><a href="'.$row['url'].'" class="current">'.$row['title'].'</a></li>';
 	 else
-		 echo '<a href="'.$row['url'].'">'.$row['title'].'</a>';
+		 echo '<li><a href="'.$row['url'].'">'.$row['title'].'</a></li>';
  }
 ?>
